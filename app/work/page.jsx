@@ -102,6 +102,25 @@ const projects = [
     live: "https://calm-puppy-c96b5b.netlify.app/",
     github: "https://github.com/Simplevhick/TodoList",
   },
+  {
+    num: "05",
+    category: "Youtube Clone",
+    title: "project 5",
+    description:
+        "Youtube Clone with react",
+    stack: [
+      {
+        name: "React.js",
+      },
+      {
+        name: "Css 3",
+      },
+      
+    ],
+    image: "/assets/ytclone.jpg",
+    live: "https://simpleyt.vercel.app/",
+    github: "https://github.com/Simplevhick/simpleyt",
+  },
 ];
 
 const Work = () => {

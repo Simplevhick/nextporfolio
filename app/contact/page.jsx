@@ -35,8 +35,11 @@ const info = [
 ];
 
 import { motion } from "framer-motion";
+import emailjs from "emailjs-com";
+import { useState } from "react";
 
 const Contact = () => {
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -52,7 +55,8 @@ const Contact = () => {
             <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
               <h3 className="text-4xl text-accent">Let's work together</h3>
               <p className="text-white/60">
-              Need top-notch web development expertise? Let's build your digital presence together!
+                Need top-notch web development expertise? Let's build your
+                digital presence together!
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Input type="firstname" placeholder="Firstname" />
@@ -60,7 +64,7 @@ const Contact = () => {
                 <Input type="email" placeholder="Email address" />
                 <Input type="phone" placeholder="Phone number" />
               </div>
-              <Select>
+              {/* <Select>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
@@ -72,7 +76,7 @@ const Contact = () => {
                     <SelectItem value="mst">Logo Design</SelectItem>
                   </SelectGroup>
                 </SelectContent>
-              </Select>
+              </Select> */}
 
               <Textarea
                 className="h-[200px]"
