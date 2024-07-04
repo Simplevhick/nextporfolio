@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useForm, ValidationError } from "@formspree/react";
 
 import {
   Select,
@@ -40,6 +41,11 @@ import { useState } from "react";
 
 const Contact = () => {
 
+  const [state, handleSubmit] = useForm("mdknolaq");
+  if (state.succeeded) {
+      return <p>Respond to you shortly!</p>;
+  }
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -52,7 +58,7 @@ const Contact = () => {
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-[30px]">
           <div className="xl:w-[54%] order-2 xl:order-none">
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl" onSubmit={handleSubmit}>
               <h3 className="text-4xl text-accent">Let's work together</h3>
               <p className="text-white/60">
                 Need top-notch web development expertise? Let's build your
@@ -60,9 +66,18 @@ const Contact = () => {
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Input type="firstname" placeholder="Firstname" />
-                <Input type="lasttname" placeholder="Lastname" />
-                <Input type="email" placeholder="Email address" />
-                <Input type="phone" placeholder="Phone number" />
+                {/* <Input type="lasttname" placeholder="Lastname" /> */}
+                <Input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email address"
+                />
+                <ValidationError
+                  prefix="Email"
+                  field="email"
+                  errors={state.errors}
+                />
               </div>
               {/* <Select>
                 <SelectTrigger className="w-full">
@@ -81,8 +96,15 @@ const Contact = () => {
               <Textarea
                 className="h-[200px]"
                 placeholder="Type your message here..."
+                id="message"
+                name="message"
               />
-              <Button size="md" className="max-w-40">
+              <ValidationError
+                prefix="Message"
+                field="message"
+                errors={state.errors}
+              />
+              <Button size="md" className="max-w-40" type="submit" disabled={state.submitting}>
                 Send message
               </Button>
             </form>
